@@ -10,6 +10,8 @@
 
 import java.awt.*;
 
+//V: very ambiguous name, "component" is as bad a name as "object" or "entity" or "manager"
+//V: consider immutability for these components
 public class Component {
 
    /* class constants */
@@ -25,6 +27,7 @@ public class Component {
    // constuctors //
    /////////////////
    
+   //V: Get rid of most of these constructors
    public Component(Point dimension) {
       this.dim = dimension;
       this.pos = DEFAULT_POSITION;

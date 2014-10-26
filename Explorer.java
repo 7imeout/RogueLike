@@ -79,6 +79,8 @@ public class Explorer {
          System.out.print("MOVE (Q to Exit): ");
          input = scan.nextLine();
 
+         //V: theres something weird to me about setting the player's location via a redrawWorld function.
+
          for (int i = 0; i < input.length(); i++) {
             clearScreen();
             loc = world.getCursorLoc();

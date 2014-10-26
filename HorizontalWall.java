@@ -8,6 +8,8 @@
 
 /* import statements */
 
+//V: I don't see any particular reason we cant combine horizontalwall and vertical wall into just like a... rectangularwall or something
+
 import java.awt.Point;
 
 public class HorizontalWall extends Component {

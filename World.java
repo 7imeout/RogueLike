@@ -5,9 +5,13 @@
   * @author  Mike Ryu
   * @version 1.0
   */
- 
+
+//V: talk to me about comments and the MSGs
+//V: file getting somewhat large, i suggest separating/injecting the view and possibly the ai away
+
 /* import statements */
 
+//V: I dont like having dependencies on AWT in a non-windowed application, especially one so small
 import java.awt.Point;
 import java.util.Random;
 
@@ -37,14 +41,16 @@ public class World {
    private int y = 0;
    private Point cursorLoc = CUROSR_INIT_POINT;
    private char[][] mapData = null;
-   private String mapView = "";
+   private String mapView = ""; //V: BAD! unnecessary state! storing this when you can very easily keep it as local variables.
    private boolean isDebugMode = DEFAULT_DEBUG_STATE;
-   private Random prg = new Random(System.currentTimeMillis());
+   private Random prg = new Random(System.currentTimeMillis()); //V: Dont seed with time
 
 
    ///////////////////
    // constructors  //
    ///////////////////
+
+   //V: kill most these constructors
 
    /**
     * Default constructor; creates world of size 80x24 with cursor at (1,1).
@@ -172,6 +178,7 @@ public class World {
       }
    }
 
+   //V: id prefer asserts or exceptions to returning the warning, warnings are ignorable, which is dangerous
    /** 
     * Overloaded method for separate value input rather than awt.java.Point.
     * @param  x desired x coordinate for the cursor.
@@ -182,6 +189,7 @@ public class World {
       return setCursorLoc(new Point(x, y));
    }
 
+   //V: lol nice name, memorable, but not very descriptive
    /**
     * Initializes the world; the data and the rendering of it.
     * @return rendering of the world(map).
@@ -208,6 +216,10 @@ public class World {
       return mapView;
    }
 
+   //V: extremely misleading function, modifies member variables when it gives no indication of doing so
+   //in either the docs or the code (i thought mapView was a local, but it turns out youre changing members)
+   //V: also, take out the ability to set the new point with this function, i cant see any reason why they
+   //should be combined
    /**
     * Re-draws the world(map) to reflect the up-to-date information;
     * use this to update cursor movement or pass null for simple re-draw.
@@ -271,6 +283,7 @@ public class World {
          letThereBeLight();
          addComponent(item, randomHoles);
       }
+      //V: why is this here
       return redrawWorld(null);
    }
 
